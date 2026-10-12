@@ -293,30 +293,6 @@ In production, a service sends the customer's data as a dict. The model returns 
 
 ---
 
-## 12. Homework – Lead scoring dataset (2026)
-
-Target: `converted` (did the lead sign up?)
-
-- **Categorical:** `lead_source`, `industry`, `employment_status`, `location`
-- **Numerical:** `annual_income`, `number_of_courses_viewed`, `interaction_count`, `lead_score`
-- **Missing values:** categorical filled with `'NA'`, numerical filled with `0.0`
-
-| Question | Method | My answer |
-|---|---|---|
-| Q1 | Mode of `industry` (after filling NAs) | |
-| Q2 | Biggest correlation among the given pairs | |
-| Q3 | Highest mutual information with `converted` (train set) | |
-| Q4 | Validation accuracy, `LogisticRegression(solver='liblinear', C=1.0, max_iter=1000, random_state=42)` | 0.65 |
-| Q5 | Least useful feature (smallest accuracy difference) | `number_of_courses_viewed` |
-| Q6 | Best `C` from `[0.000001, 0.00001, 0.0001, 0.001]` | 0.001 |
-
-Observations:
-
-- Dropping `annual_income` *raised* accuracy by about 0.08. Its large scale (tens of thousands) throws off logistic regression, so scaling it (`StandardScaler` or `np.log1p`) would likely help.
-- Smaller `C` means stronger regularization. Accuracy rose as `C` increased: 0.598 → 0.598 → 0.613 → 0.645.
-
----
-
 ## Cheat sheet
 
 | Function / method | What it does |
